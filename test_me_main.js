@@ -97,12 +97,17 @@ function next() {
     }
 
     el = document.getElementById("answer")
+    status_el = document.getElementById("status")
+    var node = document.createElement("div");
     if (el.value === app.task.result) {
         app.statistics.push(1)
+        node.classList.add('good')
     } else {
         app.statistics.push(0)
+        node.classList.add('bad')
     }
-
+    status_el.appendChild(node)
+    
     app.task = app.game.next()
     
     if (app.task === null)
@@ -122,5 +127,12 @@ function next() {
         el.textContent = "Bravo!"
     } else {
         show_task()
+    }
+}
+
+function handle_key(e) {
+    if (e.keyCode == 13)
+    {
+        next()       
     }
 }

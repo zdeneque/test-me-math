@@ -5,26 +5,28 @@
   <title>Test me Math</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="icon_250x250.png">
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body onload="initialize(null)"}>
-  <div className="main">
-        <div className="controls">
-            <button className="buttons" type="button"> <img src="gear.png"/></button>
-            <button className="buttons" type="button" onclick="load_game('GameInlinePairAddition')"> <img src="test_me.png"/></button>
+  <div class="main">
+        <div class="controls">
+            <button class="buttons" type="button"> <img class='image-button' src="gear.png"/></button>
+            <button class="buttons" type="button" onclick="load_game('GameInlinePairAddition')"> 
+              <img class='image-button' src="test_me.png"/>
+            </button>
         </div>
-        <div className="workplace" id="workplace">
-            <input type="range" min=0 max=10 value="0" id="timer" className="timer"/>
-            <div className="task">
-                <div id="question" className="question"></div>
-                <input id="answer" className="answer">
-                <button className="submit-button" type="button" onclick="next()"> --> </button>
+        <div class="workplace" id="workplace">
+            <input type="range" min=0 max=10 value="0" id="timer" class="timer"/>
+            <div class="task">
+                <div id="question" class="question"></div>
+                <input id="answer" class="answer" onkeypress="handle_key(event)">
             </div>
-            <div id="status" className="status"></div>
         </div>
-        <div className="summary" id="summary">
-            <div className="score" id="score"></div>
-            <div className="cheers" id="cheers"></div>
+        <div id="status" class="status"></div>
+        <div class="workplace" id="summary">
+            <div class="score" id="score"></div>
+            <div class="cheers" id="cheers"></div>
         </div>
   </div>
   

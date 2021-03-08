@@ -1,0 +1,251 @@
+html {
+    font-size: 10px;
+    font-family: 'sans-serif';
+}
+
+.main {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: left;
+}
+
+.controls {
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.buttons {
+    border-radius: 10px;
+    padding: 0px 0px 0px 0px;
+    margin: 10px;
+}
+
+.image-button {
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+}
+
+.workplace {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-grow: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 60%;
+}
+
+.task {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.question {
+    font-size: 5rem;
+    font-weight: bolder;
+    font-family: Helvetica, sans-serif;
+    padding-right: 10px;
+}
+
+.answer {
+    font-size: 5rem;
+    font-weight: bolder;
+    font-family: Helvetica, sans-serif;
+    height: 6rem;
+    max-width: 15rem;
+}
+
+.status {
+    padding-top: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.good {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: green;
+}
+
+.bad {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: red;
+}
+
+.score {
+    font-size: 5rem;
+    font-weight: bolder;
+    font-family: Helvetica, sans-serif;
+}
+
+.assessment {
+    border: 1px solid #d3d3d3;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    flex-grow: 4;
+    margin: 0 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.assessment-title {
+    flex-basis: 50%;
+    text-align: left;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.assessment-value {
+    flex-grow: 1;
+    border: 1px solid #111111;
+    width: 35px;
+    height: 4.5rem;
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: cadetblue;
+}
+
+.assessment-value-selected {
+    flex-grow: 1;
+    border: 5px solid #0c08e8;
+    width: 35px;
+    height: 4.5rem;
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: cadetblue;
+    text-align: center;
+    font-size: 2.5rem; 
+    font-weight: bolder;
+    color: #0c08e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.assessment-date {
+    border: none;
+    padding: 2rem;
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    width: auto;
+    text-align: center;
+    font-size: 2.5rem; 
+    font-weight: bolder;
+}
+
+.assessment-send {
+    width: 75%;
+    flex: 'flex-basis';
+    border: 1px solid #111111;
+    border-radius: 10px;
+    background-color: lightgreen;
+    padding: 2rem;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+    text-align: center;
+    font-size: 2.5rem; 
+    font-weight: bolder;
+} 
+
+.assessment-send-modified {
+    width: 75%;
+    flex: 'flex-basis';
+    border: 1px solid #111111;
+    border-radius: 10px;
+    background-color: lightsalmon;
+    padding: 2rem;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+    text-align: center;
+    font-size: 2.5rem; 
+    font-weight: bolder;
+} 
+
+.tabs-container {
+    border: 1px solid #d3d3d3;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+}
+
+.tab {
+    flex-grow: 1;
+    flex-basis: 50%;
+    border: 1px solid #111111;
+    font-size: 2rem;
+    color: darkgrey;
+    text-align: center;
+    text-decoration: none;
+    margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: white;
+}
+
+.tab-active {
+    font-weight: bolder;
+    color: black;
+    border: 2px solid black;
+    background-color: lightgrey;
+}
+
+.view-send {
+    width: 66%;
+    border: 1px solid #111111;
+    border-radius: 10px;
+    background-color: lightgreen;
+    padding: 0.25rem;
+    margin: 0rem 0.25rem 0rem 0.25rem;
+    text-align: center;
+    font-size: 2rem; 
+    font-weight: bolder;
+}
+
+.view-line {
+    padding: 0.5rem;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+}
+
+.view-date {
+    padding: 0.25rem;
+    font-size: 1.5rem;
+}
+
+.view-assessment {
+    padding: 0.25rem;
+    font-size: 1.5rem;
+}
+
+.slider-container {
+    border: 1px solid #111111;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+}

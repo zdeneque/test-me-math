@@ -34,8 +34,8 @@ class GameInlinePairAddition extends (Game) {
     }
 
     draw_game() {
-        var op1 = draw_number(Math.pow(10, this.config.CIPHER))
-        var op2 = draw_number(op1)
+        var op1 = draw_number_2digits_sum(100) //draw_number(Math.pow(10, this.config.CIPHER))
+        var op2 = draw_number_2digits_sum(op1) //draw_number(op1)
         
         console.log('Drawing: ' + op1.toString() + ', ' + op2.toString())
 
