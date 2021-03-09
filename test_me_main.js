@@ -41,9 +41,10 @@ function count_down(delay) {
 }
 
 function show_task(task) {
-    el = document.getElementById("timer")
-    el.value = 0
-    el.max = app.configuration.TIMEOUT
+    el = document.getElementById("progress")
+    el.style.width = "0%"
+    //el.value = 0
+    //el.max = app.configuration.TIMEOUT
 
     console.log('Timer max: ' + el.max)
     el = document.getElementById("question")
@@ -58,7 +59,9 @@ function show_task(task) {
     app.timer = new Worker("./timer.js")
     app.timer.onmessage = function(event) {
         timer_count = parseInt(event.data)
-        document.getElementById("timer").value = timer_count;
+        //document.getElementById("timer").value = timer_count;
+        document.getElementById("progress").style.width = Math.floor(100 * timer_count / app.configuration.COUNT_EXAMPLES).toString() + '%';
+
         if (timer_count === app.configuration.TIMEOUT) {
             app.timer.terminate()
             app.timer = null
@@ -72,13 +75,25 @@ function show_task(task) {
 }
 
 function load_game(game_name) {
-    app.game = new GameInlinePairAddition(app.configuration)
+    if (game_name ===  'GameInlinePairAddition')
+        app.game = new GameInlinePairAddition(app.configuration)
+    else if (game_name ===  'GameInlinePairSubtraction')
+        app.game = new GameInlinePairSubtraction(app.configuration)
+
     app.statistics = []
 
     el = document.getElementById("status")
     while (el.firstChild) {
         el.removeChild(el.lastChild)
     }
+
+    for (var i = 0; i < app.configuration.COUNT_EXAMPLES; i++) {
+        var node = document.createElement("div");
+        node.classList.add('empty')
+        node.id = 'status' + i.toString()
+        el.appendChild(node)
+    }
+
     el = document.getElementById("summary")
     el.style.visibility = "hidden";
     el.style.opacity = "0";
@@ -98,7 +113,10 @@ function next() {
 
     el = document.getElementById("answer")
     status_el = document.getElementById("status")
-    var node = document.createElement("div");
+    //var node = document.createElement("div");
+    nodeId = 'status' + app.statistics.length.toString()
+
+    var node = document.getElementById(nodeId)
     if (el.value === app.task.result) {
         app.statistics.push(1)
         node.classList.add('good')
@@ -106,8 +124,8 @@ function next() {
         app.statistics.push(0)
         node.classList.add('bad')
     }
-    status_el.appendChild(node)
-    
+    //status_el.appendChild(node)
+
     app.task = app.game.next()
     
     if (app.task === null)

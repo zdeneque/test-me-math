@@ -49,6 +49,24 @@ html {
     width: 60%;
 }
 
+.timer-holder {
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    width: 60%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.progress {
+    border: 3px solid darkblue;
+    border-radius: 10px;
+    background-color: blue;
+    width: 0%;
+    height: 20px;
+}
+
 .task {
     margin-top: 10px;
     display: flex;
@@ -81,6 +99,14 @@ html {
     flex-basis: 100%;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.empty {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: gray;
 }
 
 .good {

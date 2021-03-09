@@ -13,11 +13,17 @@
         <div class="controls">
             <button class="buttons" type="button"> <img class='image-button' src="gear.png"/></button>
             <button class="buttons" type="button" onclick="load_game('GameInlinePairAddition')"> 
-              <img class='image-button' src="test_me.png"/>
+              <img class='image-button' src="addition.png"/>
+            </button>
+            <button class="buttons" type="button" onclick="load_game('GameInlinePairSubtraction')"> 
+              <img class='image-button' src="subtract.png"/>
             </button>
         </div>
         <div class="workplace" id="workplace">
-            <input type="range" min=0 max=10 value="0" id="timer" class="timer"/>
+            <div class="timer-holder">
+              <div class="progress" id="progress"></div>
+            </div>
+            <!--input type="range" min=0 max=10 value="0" id="timer" class="timer"/-->
             <div class="task">
                 <div id="question" class="question"></div>
                 <input id="answer" class="answer" onkeypress="handle_key(event)">
