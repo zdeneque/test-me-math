@@ -11,7 +11,7 @@
 <body onload="initialize(null)"}>
   <div class="main">
         <div class="controls">
-            <button class="buttons" type="button"> <img class='image-button' src="gear.png"/></button>
+            <button class="buttons" type="button" id="config-btn" onclick="show_configuration()"> <img class='image-button' src="gear.png"/></button>
             <button class="buttons" type="button" onclick="load_game('GameInlinePairAddition')"> 
               <img class='image-button' src="addition.png"/>
             </button>
@@ -35,7 +35,43 @@
             <div class="cheers" id="cheers"></div>
         </div>
   </div>
+
+
+  <!-- Modals -->
+  <div id="config-modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-user-content">
+        <div class="modal-item">
+          <p id="timeout-selection">Jak dlouho trvá jeden příklad: </p>
+          <div class="slider">
+            <p class="slider-value" id="timeout-min">10s</p>
+            <input type="range" min="10" max="120" value="10" id="timeout-slider" onchange="update_timeout()"/>
+            <p class="slider-value" id="timeout-max">120s</p>
+          </div>
+        </div>
+        <div class="modal-item">
+          <p id="count-selection">Počet příkladů v jednom cvičení: </p>
+          <div class="slider">
+            <p class="slider-value" id="count-min">10</p>
+            <input type="range" min="10" max="100" value="10" id="count-slider" onchange="update_count()"/>
+            <p class="slider-value" id="count-max">100</p>
+          </div>
+        </div>
+        </div>
+        <span class="close" onclick="close_configuration()">&times;</span>
+    </div>
+  </div> 
   
+  <script>
+    window.onclick = function(event) {
+      modal = document.getElementById("config-modal")
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
   <script src="configuration.js"></script>
   <script src="math_functions.js"></script>
   <script src="games.js"></script>

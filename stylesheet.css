@@ -131,147 +131,66 @@ html {
     font-family: Helvetica, sans-serif;
 }
 
-.assessment {
-    border: 1px solid #d3d3d3;
-    padding: 0.25rem 1rem 0.25rem 1rem;
-    flex-grow: 4;
-    margin: 0 1rem 1rem 1rem;
+ /* The Modal (background) */
+ .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
-}
-
-.assessment-title {
-    flex-basis: 50%;
-    text-align: left;
-    font-size: 2rem;
-    font-weight: bolder;
-}
-
-.assessment-value {
-    flex-grow: 1;
-    border: 1px solid #111111;
-    width: 35px;
-    height: 4.5rem;
-    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
-    background-color: cadetblue;
-}
-
-.assessment-value-selected {
-    flex-grow: 1;
-    border: 5px solid #0c08e8;
-    width: 35px;
-    height: 4.5rem;
-    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
-    background-color: cadetblue;
-    text-align: center;
-    font-size: 2.5rem; 
-    font-weight: bolder;
-    color: #0c08e8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.assessment-date {
-    border: none;
-    padding: 2rem;
-    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
-    width: auto;
-    text-align: center;
-    font-size: 2.5rem; 
-    font-weight: bolder;
-}
-
-.assessment-send {
-    width: 75%;
-    flex: 'flex-basis';
-    border: 1px solid #111111;
-    border-radius: 10px;
-    background-color: lightgreen;
-    padding: 2rem;
-    margin: 0rem 0.5rem 0rem 0.5rem;
-    text-align: center;
-    font-size: 2.5rem; 
-    font-weight: bolder;
-} 
-
-.assessment-send-modified {
-    width: 75%;
-    flex: 'flex-basis';
-    border: 1px solid #111111;
-    border-radius: 10px;
-    background-color: lightsalmon;
-    padding: 2rem;
-    margin: 0rem 0.5rem 0rem 0.5rem;
-    text-align: center;
-    font-size: 2.5rem; 
-    font-weight: bolder;
-} 
-
-.tabs-container {
-    border: 1px solid #d3d3d3;
-    padding: 0.25rem 1rem 0.25rem 1rem;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-}
-
-.tab {
-    flex-grow: 1;
-    flex-basis: 50%;
-    border: 1px solid #111111;
-    font-size: 2rem;
-    color: darkgrey;
-    text-align: center;
-    text-decoration: none;
-    margin: 0.2rem 0.2rem 0.2rem 0.2rem;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    background-color: white;
-}
-
-.tab-active {
-    font-weight: bolder;
-    color: black;
-    border: 2px solid black;
-    background-color: lightgrey;
-}
-
-.view-send {
-    width: 66%;
-    border: 1px solid #111111;
-    border-radius: 10px;
-    background-color: lightgreen;
-    padding: 0.25rem;
-    margin: 0rem 0.25rem 0rem 0.25rem;
-    text-align: center;
-    font-size: 2rem; 
-    font-weight: bolder;
-}
-
-.view-line {
-    padding: 0.5rem;
-    margin: 0rem 0.5rem 0rem 0.5rem;
-}
-
-.view-date {
-    padding: 0.25rem;
-    font-size: 1.5rem;
-}
-
-.view-assessment {
-    padding: 0.25rem;
-    font-size: 1.5rem;
-}
-
-.slider-container {
-    border: 1px solid #111111;
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    justify-content: space-between;
+  }
+  
+  .modal-user-content {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    align-items: center;
-}
+    align-items: left;
+  }
+
+  .modal-item {
+    font-size: 28px;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 42px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  } 
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+
+  .slider-value {
+    font-size: 24px;
+  }

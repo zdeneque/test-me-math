@@ -25,7 +25,7 @@ function format_task(task) {
     return task_text
 }
 
-function count_down(delay) {
+/*function count_down(delay) {
     setTimeout(function() { 
         el = document.getElementById("timer")
         el.value = app.configuration.TIMEOUT - delay
@@ -38,15 +38,13 @@ function count_down(delay) {
         }
         count_down(delay - 1)
     }, 1000);
-}
+}*/
 
 function show_task(task) {
+    console.log("Task timeout " + app.configuration.TIMEOUT)
     el = document.getElementById("progress")
     el.style.width = "0%"
-    //el.value = 0
-    //el.max = app.configuration.TIMEOUT
 
-    console.log('Timer max: ' + el.max)
     el = document.getElementById("question")
     el.textContent = format_task(app.task)
 
@@ -59,10 +57,10 @@ function show_task(task) {
     app.timer = new Worker("./timer.js")
     app.timer.onmessage = function(event) {
         timer_count = parseInt(event.data)
-        //document.getElementById("timer").value = timer_count;
-        document.getElementById("progress").style.width = Math.floor(100 * timer_count / app.configuration.COUNT_EXAMPLES).toString() + '%';
+        document.getElementById("progress").style.width = Math.floor(100 * timer_count / app.configuration.TIMEOUT).toString() + '%';
 
-        if (timer_count === app.configuration.TIMEOUT) {
+        console.log(timer_count + " - " + app.configuration.TIMEOUT)
+        if (timer_count == app.configuration.TIMEOUT) {
             app.timer.terminate()
             app.timer = null
             setTimeout(function() { next() }, 1000);
@@ -75,6 +73,8 @@ function show_task(task) {
 }
 
 function load_game(game_name) {
+    app.configuration = test_me_config
+    console.log("Current timeout: " + app.configuration.TIMEOUT) 
     if (game_name ===  'GameInlinePairAddition')
         app.game = new GameInlinePairAddition(app.configuration)
     else if (game_name ===  'GameInlinePairSubtraction')
@@ -139,7 +139,7 @@ function next() {
 
         el = document.getElementById("score")
         var sum = app.statistics.reduce((total, currentValue) => total + currentValue, 0)
-        el.textContent = "You earned " + sum.toString() + " out of " + app.statistics.length.toString()
+        el.textContent = "Máš správně " + sum.toString() + " příkladů z " + app.statistics.length.toString()
 
         el = document.getElementById("cheers")
         el.textContent = "Bravo!"
