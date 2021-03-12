@@ -94,12 +94,12 @@ function load_game(game_name) {
         el.appendChild(node)
     }
 
-    el = document.getElementById("summary")
-    el.style.visibility = "hidden";
-    el.style.opacity = "0";
-    el = document.getElementById("workplace")
-    el.style.visibility = "visible";
-    el.style.opacity = "1";
+    //el = document.getElementById("summary")
+    //el.style.visibility = "hidden";
+    //el.style.opacity = "0";
+    //el = document.getElementById("workplace")
+    //el.style.visibility = "visible";
+    //el.style.opacity = "1";
 
     app.task = app.game.next()
     show_task(app.task)
@@ -130,27 +130,58 @@ function next() {
     
     if (app.task === null)
     {
-        el = document.getElementById("workplace")
-        el.style.visibility = "hidden";
-        el.style.opacity = "0";
-        el = document.getElementById("summary")
-        el.style.visibility = "visible";
-        el.style.opacity = "1";
+        //el = document.getElementById("workplace")
+        //el.style.visibility = "hidden";
+        //el.style.opacity = "0";
+        //el = document.getElementById("summary")
+        //el.style.visibility = "visible";
+        //el.style.opacity = "1";
 
-        el = document.getElementById("score")
         var sum = app.statistics.reduce((total, currentValue) => total + currentValue, 0)
+        el = document.getElementById("summary-text")
         el.textContent = "Máš správně " + sum.toString() + " příkladů z " + app.statistics.length.toString()
 
         el = document.getElementById("cheers")
-        el.textContent = "Bravo!"
+        cheers = get_cheers(sum, app.statistics.length.toString())
+        el.textContent = cheers.text
+
+        el = document.getElementById("status-modal")
+        el.style.display = "block";
     } else {
         show_task()
     }
 }
 
+function get_cheers(sum, total) {
+    var cheers = {image: '', text: '' };
+    err_rate  = 1 - sum / total
+    idx = Math.floor(5 * Math.random())
+    status_idx = '1'
+
+    if (err_rate > CHEERS['1'].threshold)
+    {
+        status_idx = '2'
+        if (err_rate > CHEERS['2'].threshold) {
+            status_idx = '3'
+        } else {
+            status_idx = '4'
+        }
+
+        cheers.image = CHEERS[status_idx].image
+        cheers.text = CHEERS[status_idx].texts[idx]
+    }
+
+    return cheers
+
+}
 function handle_key(e) {
     if (e.keyCode == 13)
     {
         next()       
     }
+}
+
+function close_status_summary() {
+    var modal = document.getElementById("status-modal");
+    modal.style.display = "none";
 }

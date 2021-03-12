@@ -30,10 +30,10 @@
             </div>
         </div>
         <div id="status" class="status"></div>
-        <div class="workplace" id="summary">
+        <!--div class="workplace" id="summary">
             <div class="score" id="score"></div>
             <div class="cheers" id="cheers"></div>
-        </div>
+        </div-->
   </div>
 
 
@@ -58,8 +58,23 @@
             <p class="slider-value" id="count-max">100</p>
           </div>
         </div>
+      </div>
+      <span class="close" onclick="close_configuration()">&times;</span>
+    </div>
+  </div> 
+
+   <div id="status-modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-user-content">
+        <div class="modal-item">
+          <p id="summary-text"></p>
         </div>
-        <span class="close" onclick="close_configuration()">&times;</span>
+        <div class="modal-item">
+          <p id="cheers"></p>
+        </div>
+      </div>
+      <span class="close" onclick="close_status_summary()">&times;</span>
     </div>
   </div> 
   

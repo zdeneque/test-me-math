@@ -40,7 +40,7 @@ function close_configuration() {
     modal.style.display = "none";
 }
 
-var CHEER_TEXTS = {
+var CHEERS = {
     '1': {
         image: 'cup.png',
         threshold: 0.1,
