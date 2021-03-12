@@ -18,6 +18,9 @@
             <button class="buttons" type="button" onclick="load_game('GameInlinePairSubtraction')"> 
               <img class='image-button' src="subtract.png"/>
             </button>
+            <button class="buttons" type="button" onclick="load_game('GameInlineAdditionSubtraction')"> 
+              <img class='image-button' src="add-subtract.png"/>
+            </button>
         </div>
         <div class="workplace" id="workplace">
             <div class="timer-holder">
@@ -59,7 +62,7 @@
           </div>
         </div>
       </div>
-      <span class="close" onclick="close_configuration()">&times;</span>
+      <span class="close" onclick="close_configuration()"><img src="confirm.png" width="50" height="50"/></span>
     </div>
   </div> 
 
@@ -67,11 +70,10 @@
     <!-- Modal content -->
     <div class="modal-content">
       <div class="modal-user-content">
-        <div class="modal-item">
+        <div class="modal-item-center">
           <p id="summary-text"></p>
-        </div>
-        <div class="modal-item">
-          <p id="cheers"></p>
+          <p id="cheers" class="cheers"></p>
+          <img src="" id="cheers-image" class="cheers-image"/>
         </div>
       </div>
       <span class="close" onclick="close_status_summary()">&times;</span>

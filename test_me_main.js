@@ -79,7 +79,9 @@ function load_game(game_name) {
         app.game = new GameInlinePairAddition(app.configuration)
     else if (game_name ===  'GameInlinePairSubtraction')
         app.game = new GameInlinePairSubtraction(app.configuration)
-
+    else if (game_name ===  'GameInlineAdditionSubtraction')
+        app.game = new GameInlineAdditionSubtraction(app.configuration)
+        
     app.statistics = []
 
     el = document.getElementById("status")
@@ -144,6 +146,9 @@ function next() {
         el = document.getElementById("cheers")
         cheers = get_cheers(sum, app.statistics.length.toString())
         el.textContent = cheers.text
+        
+        el = document.getElementById("cheers-image")
+        el.src = cheers.image
 
         el = document.getElementById("status-modal")
         el.style.display = "block";
@@ -163,13 +168,13 @@ function get_cheers(sum, total) {
         status_idx = '2'
         if (err_rate > CHEERS['2'].threshold) {
             status_idx = '3'
-        } else {
+        } if (err_rate > CHEERS['3'].threshold) {
             status_idx = '4'
         }
-
-        cheers.image = CHEERS[status_idx].image
-        cheers.text = CHEERS[status_idx].texts[idx]
     }
+
+    cheers.image = CHEERS[status_idx].image
+    cheers.text = CHEERS[status_idx].texts[idx]
 
     return cheers
 

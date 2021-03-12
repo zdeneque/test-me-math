@@ -60,3 +60,29 @@ class GameInlinePairSubtraction extends (Game) {
         this.result = (op1 - op2).toString()
     }
 }
+
+class GameInlineAdditionSubtraction extends (Game) {
+    constructor(config) {
+        super(config)
+        this.operations = ["-", "="]
+    }
+
+    draw_game() {
+        var type = Math.floor(100 * Math.random())
+        var op1 = 0
+        var op2 = 0
+
+        if (type < 50) {
+            this.operations = ["-", "="]
+            op1 = draw_number_2digits_diff_biased(100) //draw_number(Math.pow(10, this.config.CIPHER))
+            op2 = draw_number_2digits_diff_biased(op1) //draw_number(op1)
+        } else {
+            this.operations = ["+", "="]
+            op1 = draw_number_2digits_sum_biased(100) //draw_number(Math.pow(10, this.config.CIPHER))
+            op2 = draw_number_2digits_sum_biased(op1) //draw_number(op1)
+        }
+
+        this.operands = [op1.toString(), op2.toString()]
+        this.result = (op1 - op2).toString()
+    }
+}

@@ -42,17 +42,18 @@ function close_configuration() {
 
 var CHEERS = {
     '1': {
-        image: 'cup.png',
+        image: 'cup1.png',
         threshold: 0.1,
         texts: [
             'Tak to bylo hustý!',
-            'Nejsi ty brácha od Ajnštajna',
+            'Nejsi ty brácha od Ajnštajna?',
             'Bravo, bravissimo!',
             'To šlo jak po másle!',
-            'Výborná práce!']
+            'Výborná práce!',
+            'To bylo pro třeťáky, ne?']
     },
     '2': {
-        image: 'thumb_up.png',
+        image: 'thumbs-up.png',
         threshold: 0.2,
         texts: [
             'To vůbec nebylo špatné!',
@@ -63,7 +64,7 @@ var CHEERS = {
         ]
     },
     '3': {
-        image: 'fingers_crossed.png',
+        image: 'sun.jpg',
         threshold: 0.5,
         texts: [
             'Žádný učený z nebe nespadl.',
@@ -74,7 +75,7 @@ var CHEERS = {
         ]
     },
     '4': {
-        image: 'cloud_sun.png',
+        image: 'squirel.png',
         threshold: 1.0,
         texts: [
             'Někdy se prostě nedaří. Netrap se, zítra to zkus znova.',

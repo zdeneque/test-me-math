@@ -151,6 +151,7 @@ html {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
+    border-radius: 15px;
     width: 30%; /* Could be more or less, depending on screen size */
     display: flex;
     flex-wrap: nowrap;
@@ -168,6 +169,24 @@ html {
 
   .modal-item {
     font-size: 28px;
+  }
+
+  .modal-item-center {
+    font-size: 28px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cheers {
+    font-size: 24px;
+    font-style: italic;
+  }
+
+  .cheers-image {
+    height: 150px;
+    width: 150px;
   }
 
   /* The Close Button */
