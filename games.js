@@ -34,11 +34,10 @@ class GameInlinePairAddition extends (Game) {
     }
 
     draw_game() {
-        var op1 = draw_number_2digits_sum_biased(100) //draw_number(Math.pow(10, this.config.CIPHER))
-        var op2 = draw_number_2digits_sum_biased(op1) //draw_number(op1)
-        
-        console.log('Drawing: ' + op1.toString() + ', ' + op2.toString())
-
+        var res = draw_between(25, 100)
+        var op1 = draw_between(11, res - 11)
+        var op2 = res - op1
+        this.result = res.toString()
         this.operands = [op1.toString(), op2.toString()]
         this.result = (op1 + op2).toString()
     }
@@ -51,11 +50,9 @@ class GameInlinePairSubtraction extends (Game) {
     }
 
     draw_game() {
-        var op1 = draw_number_2digits_diff_biased(100) //draw_number(Math.pow(10, this.config.CIPHER))
-        var op2 = draw_number_2digits_diff_biased(op1) //draw_number(op1)
-        
-        console.log('Drawing: ' + op1.toString() + ', ' + op2.toString())
-
+        var op1 = draw_between(25, 100)
+        var op2 = draw_between(11, op1 - 11)
+        this.result = (op1 - op2).toString()
         this.operands = [op1.toString(), op2.toString()]
         this.result = (op1 - op2).toString()
     }
@@ -74,15 +71,17 @@ class GameInlineAdditionSubtraction extends (Game) {
 
         if (type < 50) {
             this.operations = ["-", "="]
-            op1 = draw_number_2digits_diff_biased(100) //draw_number(Math.pow(10, this.config.CIPHER))
-            op2 = draw_number_2digits_diff_biased(op1) //draw_number(op1)
+            op1 = draw_between(25, 100)
+            op2 = draw_between(11, op1 - 11)
+            this.result = (op1 - op2).toString()
         } else {
             this.operations = ["+", "="]
-            op1 = draw_number_2digits_sum_biased(100) //draw_number(Math.pow(10, this.config.CIPHER))
-            op2 = draw_number_2digits_sum_biased(op1) //draw_number(op1)
+            var res = draw_between(25, 100)
+            op1 = draw_between(11, res - 11)
+            op2 = res - op1
+            this.result = res.toString()
         }
 
         this.operands = [op1.toString(), op2.toString()]
-        this.result = (op1 - op2).toString()
     }
 }
