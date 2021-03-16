@@ -85,3 +85,29 @@ class GameInlineAdditionSubtraction extends (Game) {
         this.operands = [op1.toString(), op2.toString()]
     }
 }
+
+class GameInlineMultiplicationDivision extends (Game) {
+    constructor(config) {
+        super(config)
+        this.operations = ["x", "="]
+    }
+
+    draw_game() {
+        var type = Math.floor(100 * Math.random())
+        var op1 = 0
+        var op2 = 0
+        op1 = draw_between(2, 10)
+        op2 = draw_between(2, 10)
+
+        if (type < 50) {
+            this.operations = ["x", "="]
+            this.result = (op1 * op2).toString()
+        } else {
+            this.operations = ["/", "="]
+            this.result = op1.toString()
+            op1 = op1 * op2
+        }
+
+        this.operands = [op1.toString(), op2.toString()]
+    }
+}

@@ -81,6 +81,8 @@ function load_game(game_name) {
         app.game = new GameInlinePairSubtraction(app.configuration)
     else if (game_name ===  'GameInlineAdditionSubtraction')
         app.game = new GameInlineAdditionSubtraction(app.configuration)
+    else if (game_name === 'GameInlineMultiplicationDivision')
+        app.game = new GameInlineMultiplicationDivision(app.configuration)
         
     app.statistics = []
 
