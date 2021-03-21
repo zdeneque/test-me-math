@@ -152,7 +152,7 @@ html {
     padding: 20px;
     border: 1px solid #888;
     border-radius: 15px;
-    width: 30%; /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -164,7 +164,7 @@ html {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
   }
 
   .modal-item {
@@ -177,6 +177,7 @@ html {
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
   }
 
   .cheers {

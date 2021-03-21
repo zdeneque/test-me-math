@@ -13,6 +13,9 @@ function initialize(config) {
     if (config !== null) {
         app.config = config
     }
+    el = document.getElementById("answer")
+    el.style.visibility = "hidden";
+    el.style.opacity = "0";
 }
 
 function format_task(task) {
@@ -24,21 +27,6 @@ function format_task(task) {
 
     return task_text
 }
-
-/*function count_down(delay) {
-    setTimeout(function() { 
-        el = document.getElementById("timer")
-        el.value = app.configuration.TIMEOUT - delay
-        console.log('Timer ' + el.value)
-        if (app.answer !== null)
-            return;
-        if (delay === 0) {
-            setTimeout(function() { next() }, 1000);
-            return;
-        }
-        count_down(delay - 1)
-    }, 1000);
-}*/
 
 function show_task(task) {
     console.log("Task timeout " + app.configuration.TIMEOUT)
@@ -64,12 +52,8 @@ function show_task(task) {
             app.timer.terminate()
             app.timer = null
             setTimeout(function() { next() }, 1000);
-        
         }
     };
-    //app.timer.postMessage()
-
-    //count_down(app.configuration.TIMEOUT - 1)
 }
 
 function load_game(game_name) {
@@ -86,24 +70,7 @@ function load_game(game_name) {
         
     app.statistics = []
 
-    el = document.getElementById("status")
-    while (el.firstChild) {
-        el.removeChild(el.lastChild)
-    }
-
-    for (var i = 0; i < app.configuration.COUNT_EXAMPLES; i++) {
-        var node = document.createElement("div");
-        node.classList.add('empty')
-        node.id = 'status' + i.toString()
-        el.appendChild(node)
-    }
-
-    //el = document.getElementById("summary")
-    //el.style.visibility = "hidden";
-    //el.style.opacity = "0";
-    //el = document.getElementById("workplace")
-    //el.style.visibility = "visible";
-    //el.style.opacity = "1";
+    reset_view(app)
 
     app.task = app.game.next()
     show_task(app.task)
@@ -115,45 +82,13 @@ function next() {
         app.timer = null
     }
 
-    el = document.getElementById("answer")
-    status_el = document.getElementById("status")
-    //var node = document.createElement("div");
-    nodeId = 'status' + app.statistics.length.toString()
-
-    var node = document.getElementById(nodeId)
-    if (el.value === app.task.result) {
-        app.statistics.push(1)
-        node.classList.add('good')
-    } else {
-        app.statistics.push(0)
-        node.classList.add('bad')
-    }
-    //status_el.appendChild(node)
+    update_scores(app)
 
     app.task = app.game.next()
     
     if (app.task === null)
     {
-        //el = document.getElementById("workplace")
-        //el.style.visibility = "hidden";
-        //el.style.opacity = "0";
-        //el = document.getElementById("summary")
-        //el.style.visibility = "visible";
-        //el.style.opacity = "1";
-
-        var sum = app.statistics.reduce((total, currentValue) => total + currentValue, 0)
-        el = document.getElementById("summary-text")
-        el.textContent = "Máš správně " + sum.toString() + " příkladů z " + app.statistics.length.toString()
-
-        el = document.getElementById("cheers")
-        cheers = get_cheers(sum, app.statistics.length.toString())
-        el.textContent = cheers.text
-        
-        el = document.getElementById("cheers-image")
-        el.src = cheers.image
-
-        el = document.getElementById("status-modal")
-        el.style.display = "block";
+        show_summary(app)
     } else {
         show_task()
     }
@@ -181,6 +116,7 @@ function get_cheers(sum, total) {
     return cheers
 
 }
+
 function handle_key(e) {
     if (e.keyCode == 13)
     {

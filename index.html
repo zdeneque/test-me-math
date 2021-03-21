@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Test me Math</title>
+  <title>Mechanical Math</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="icon_250x250.png">
   <link rel="stylesheet" href="stylesheet.css">
@@ -29,17 +29,12 @@
             <div class="timer-holder">
               <div class="progress" id="progress"></div>
             </div>
-            <!--input type="range" min=0 max=10 value="0" id="timer" class="timer"/-->
-            <div class="task">
-                <div id="question" class="question"></div>
-                <input id="answer" class="answer" onkeypress="handle_key(event)">
+            <div class="task" >
+              <div id="question" class="question">Vyber si některý z testů...</div>
+              <input id="answer" class="answer" onkeypress="handle_key(event)">
             </div>
         </div>
         <div id="status" class="status"></div>
-        <!--div class="workplace" id="summary">
-            <div class="score" id="score"></div>
-            <div class="cheers" id="cheers"></div>
-        </div-->
   </div>
 
 
@@ -95,6 +90,7 @@
   <script src="configuration.js"></script>
   <script src="math_functions.js"></script>
   <script src="games.js"></script>
+  <script src="visuals.js"></script>
   <script src="test_me_main.js"></script> 
 
 </body>
