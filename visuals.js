@@ -46,3 +46,57 @@ function update_scores(app) {
         node.classList.add('bad')
     }
 }
+
+function format_task_inline(task) {
+    var i;
+    var task_text = ''
+    for (i = 0; i < task.operations.length; i++) {
+        task_text += task.operands[i] + " " + task.operations[i] + " "
+    }
+
+    return task_text
+}
+
+function build_task_inline(app) {
+    el = document.getElementById("task")
+    el.style.flexDirection = "row"
+
+    el = document.getElementById("progress")
+    el.style.width = "0%"
+
+    el = document.getElementById("question")
+    while (el.firstChild) {
+        el.removeChild(el.lastChild)
+    }
+    el.textContent = format_task_inline(app.task)
+
+    el = document.getElementById("answer")
+    el.value = ""
+}
+
+function build_task_stacked(app) {
+    el = document.getElementById("task")
+    el.style.flexDirection = "column"
+
+    el = document.getElementById("progress")
+    el.style.width = "0%"
+
+    el = document.getElementById("question")
+    while (el.firstChild) {
+        el.removeChild(el.lastChild)
+    }
+    node = document.createElement("div")
+    node.style.textAlign = "right"
+    node.textContent = app.task.operands[0]
+    el.appendChild(node)
+    node = document.createElement("div")
+    node.style.textAlign = "right"
+    node.textContent = app.task.operations[0] + "  " + app.task.operands[1]
+    el.appendChild(node)
+    node = document.createElement("hr")
+    node.style.width = "100%"
+    el.appendChild(node)
+
+    el = document.getElementById("answer")
+    el.value = ""
+}

@@ -12,24 +12,30 @@
   <div class="main">
         <div class="controls">
             <button class="buttons" type="button" id="config-btn" onclick="show_configuration()"> <img class='image-button' src="gear.png"/></button>
-            <button class="buttons" type="button" onclick="load_game('GameInlinePairAddition')"> 
+            <!--button class="buttons" type="button" onclick="load_game('GameInlinePairAddition')"> 
               <img class='image-button' src="addition.png"/>
             </button>
             <button class="buttons" type="button" onclick="load_game('GameInlinePairSubtraction')"> 
               <img class='image-button' src="subtract.png"/>
-            </button>
+            </button-->
             <button class="buttons" type="button" onclick="load_game('GameInlineAdditionSubtraction')"> 
               <img class='image-button' src="add-subtract.png"/>
             </button>
             <button class="buttons" type="button" onclick="load_game('GameInlineMultiplicationDivision')"> 
               <img class='image-button' src="multiply-divide.png"/>
             </button>
+            <button class="buttons" type="button" onclick="load_game('GameStackedAdditionSubtraction')"> 
+              <img class='image-button' src="add-subtract-stacked.png"/>
+            </button>
+            <button class="buttons" type="button" onclick="load_game('GameStackedMultiplication')"> 
+              <img class='image-button' src="multiply-stacked.png"/>
+            </button>
         </div>
         <div class="workplace" id="workplace">
             <div class="timer-holder">
               <div class="progress" id="progress"></div>
             </div>
-            <div class="task" >
+            <div class="task" id="task">
               <div id="question" class="question">Vyber si některý z testů...</div>
               <input id="answer" class="answer" onkeypress="handle_key(event)">
             </div>

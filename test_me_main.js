@@ -18,26 +18,10 @@ function initialize(config) {
     el.style.opacity = "0";
 }
 
-function format_task(task) {
-    var i;
-    var task_text = ''
-    for (i = 0; i < task.operations.length; i++) {
-        task_text += task.operands[i] + " " + task.operations[i] + " "
-    }
-
-    return task_text
-}
-
-function show_task(task) {
+function show_task(app) {
     console.log("Task timeout " + app.configuration.TIMEOUT)
-    el = document.getElementById("progress")
-    el.style.width = "0%"
 
-    el = document.getElementById("question")
-    el.textContent = format_task(app.task)
-
-    el = document.getElementById("answer")
-    el.value = ""
+    app.game.build_task(app)
 
     if (app.timer != null)
         app.timer.terminate()
@@ -67,13 +51,17 @@ function load_game(game_name) {
         app.game = new GameInlineAdditionSubtraction(app.configuration)
     else if (game_name === 'GameInlineMultiplicationDivision')
         app.game = new GameInlineMultiplicationDivision(app.configuration)
+    else if (game_name === 'GameStackedAdditionSubtraction')
+        app.game = new GameStackedAdditionSubtraction(app.configuration)
+    else if (game_name === 'GameStackedMultiplication')
+        app.game = new GameStackedMultiplication(app.configuration)
         
     app.statistics = []
 
     reset_view(app)
 
     app.task = app.game.next()
-    show_task(app.task)
+    show_task(app)
 }
 
 function next() {
@@ -90,7 +78,7 @@ function next() {
     {
         show_summary(app)
     } else {
-        show_task()
+        show_task(app)
     }
 }
 
