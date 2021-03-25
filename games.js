@@ -10,6 +10,11 @@ class Game {
         this.config = config
     }
 
+    is_correct() {
+        el = document.getElementById("answer")
+        return (el.value === this.result)
+    }
+
     next() {
         if (this.attempt < this.config.COUNT_EXAMPLES) {
             this.attempt += 1
@@ -161,6 +166,54 @@ class GameStackedAdditionSubtraction extends (Game) {
     }
 
 }
+
+class GameQuizAdditionSubtraction extends (Game) {
+    constructor(config) {
+        super(config)
+        this.operations = ["-", "="]
+    }
+
+    is_correct() {
+        el = document.getElementById("input-op1")
+        var op1 = el.value.trim()
+        el = document.getElementById("input-op2")
+        var op2 = el.value.substring(1).trim()
+        el = document.getElementById("answer")
+        var res = el.value.trim()
+
+        console.log("Typed: " + op1.toString() + ' ' + op2.toString() + '->' + res.toString())
+        console.log("ToBe: " + this.operands[0] + ' ' + this.operands[1] + '->' + this.result)
+
+        return (op1 === this.operands[0] && op2 === this.operands[1] && res === this.result)
+    }
+
+    draw_game() {
+        var type = Math.floor(100 * Math.random())
+        var op1 = 0
+        var op2 = 0
+
+        if (type < 50) {
+            this.operations = ["-", "="]
+            op1 = draw_between(25, 100)
+            op2 = draw_between(11, op1 - 11)
+            this.result = (op1 - op2).toString()
+        } else {
+            this.operations = ["+", "="]
+            var res = draw_between(25, 100)
+            op1 = draw_between(11, res - 11)
+            op2 = res - op1
+            this.result = res.toString()
+        }
+
+        this.operands = [op1.toString(), op2.toString()]
+    }
+
+    build_task(app) {
+        build_task_quiz(app)
+    }
+
+}
+
 class GameStackedMultiplication extends (Game) {
     constructor(config) {
         super(config)

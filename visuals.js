@@ -33,12 +33,9 @@ function show_summary(app) {
 }
 
 function update_scores(app) {
-    el = document.getElementById("answer")
-    status_el = document.getElementById("status")
     nodeId = 'status' + app.statistics.length.toString()
-
     var node = document.getElementById(nodeId)
-    if (el.value === app.task.result) {
+    if (app.game.is_correct()) {
         app.statistics.push(1)
         node.classList.add('good')
     } else {
@@ -99,4 +96,57 @@ function build_task_stacked(app) {
 
     el = document.getElementById("answer")
     el.value = ""
+}
+
+function get_mask(text, mask) {
+    var arr = text.split('')
+    for (var i = 0; i < text.length; i++) {
+        if (mask[i] != '*' && Math.random() >= 0.5) {
+            arr[i] = '*'
+        }
+    }
+    return arr.join('')
+}
+
+function build_task_quiz(app) {
+    mask1 = get_mask(app.task.operands[0], app.task.operands[0])
+    mask2 = get_mask(app.task.operands[1], mask1)
+    mask_res = app.task.result.split('')
+    for (var i = 0; i < mask_res.length; i++) {
+        if (mask1[i] != '*' && mask2[i] != '*') {
+            mask_res[i] = '*'
+        }
+    }
+
+    el = document.getElementById("task")
+    el.style.flexDirection = "column"
+
+    el = document.getElementById("progress")
+    el.style.width = "0%"
+
+    el = document.getElementById("question")
+    while (el.firstChild) {
+        el.removeChild(el.lastChild)
+    }
+    node = document.createElement("input")
+    node.id = 'input-op1'
+    node.classList.add('answer')
+    node.style.textAlign = "right"
+    node.addEventListener('keypress', handle_key, false)
+    node.value = mask1
+    el.appendChild(node)
+    node = document.createElement("input")
+    node.id = 'input-op2'
+    node.classList.add('answer')
+    node.style.textAlign = "right"
+    node.addEventListener('keypress', handle_key, false)
+    node.value = app.task.operations[0] + "  " + mask2
+    el.appendChild(node)
+    node = document.createElement("hr")
+    node.style.width = "100%"
+    el.appendChild(node)
+
+    el = document.getElementById("answer")
+    el.style.textAlign = "right"
+    el.value = mask_res.join('')
 }

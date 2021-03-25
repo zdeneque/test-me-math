@@ -55,6 +55,8 @@ function load_game(game_name) {
         app.game = new GameStackedAdditionSubtraction(app.configuration)
     else if (game_name === 'GameStackedMultiplication')
         app.game = new GameStackedMultiplication(app.configuration)
+    else if (game_name === 'GameQuizAdditionSubtraction')
+        app.game = new GameQuizAdditionSubtraction(app.configuration)
         
     app.statistics = []
 
