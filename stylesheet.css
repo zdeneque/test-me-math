@@ -152,7 +152,7 @@ html {
   .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 30px 100px 30px 100px;
     border: 1px solid #888;
     border-radius: 15px;
     width: 60%; /* Could be more or less, depending on screen size */
@@ -167,10 +167,13 @@ html {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
+    padding-bottom: 20px;
   }
 
   .modal-item {
+    padding: 0px;
+    margin: 0px;
     font-size: 28px;
   }
 
@@ -180,7 +183,7 @@ html {
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: right;
   }
 
   .cheers {
@@ -212,6 +215,7 @@ html {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
+    padding-left: 20px;
   }
 
   .slider-value {

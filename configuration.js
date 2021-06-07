@@ -18,6 +18,11 @@ function show_configuration() {
     count_slider.value = test_me_config.COUNT_EXAMPLES
     count_selection.innerHTML = "Počet příkladů v jednom cvičení: <b>" + test_me_config.COUNT_EXAMPLES + "</b>"
 
+    var cipher_slider = document.getElementById("cipher-slider");
+    var cipher_selection = document.getElementById("cipher-selection")
+    cipher_slider.value = test_me_config.CIPHER
+    cipher_selection.innerHTML = "Počet cifer nejvyššího čísla: <b>" + test_me_config.CIPHER + "</b>"
+
     modal.style.display = "block";
 }
 
@@ -33,6 +38,13 @@ function update_count() {
     var count_selection = document.getElementById("count-selection")
     test_me_config.COUNT_EXAMPLES = count_slider.value
     count_selection.innerHTML = "Počet příkladů v jednom cvičení: <b>" + test_me_config.COUNT_EXAMPLES + "</b>"
+}
+
+function update_cipher() {
+    var cipher_slider = document.getElementById("cipher-slider");
+    var cipher_selection = document.getElementById("cipher-selection")
+    test_me_config.CIPHER = cipher_slider.value
+    cipher_selection.innerHTML = "Počet cifer nejvyššího čísla: <b>" + test_me_config.CIPHER + "</b>"
 }
 
 function close_configuration() {

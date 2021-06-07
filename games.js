@@ -8,6 +8,9 @@ class Game {
         this.operands = []
         this.display = 'inline'
         this.config = config
+
+        this.max = Math.pow(10, config.CIPHER)
+        this.min = 11
     }
 
     is_correct() {
@@ -39,8 +42,8 @@ class GameInlinePairAddition extends (Game) {
     }
 
     draw_game() {
-        var res = draw_between(25, 100)
-        var op1 = draw_between(11, res - 11)
+        var res = draw_between(2 * this.min + 1, this.max) //25, 100
+        var op1 = draw_between(this.min, res - this.min) //11, res - 11
         var op2 = res - op1
         this.result = res.toString()
         this.operands = [op1.toString(), op2.toString()]
@@ -59,8 +62,8 @@ class GameInlinePairSubtraction extends (Game) {
     }
 
     draw_game() {
-        var op1 = draw_between(25, 100)
-        var op2 = draw_between(11, op1 - 11)
+        var op1 = draw_between(2 * this.min + 1, this.max) //25, 100
+        var op2 = draw_between(this.min, op1 - this.min) // 11, op1 - 11
         this.result = (op1 - op2).toString()
         this.operands = [op1.toString(), op2.toString()]
         this.result = (op1 - op2).toString()
@@ -84,13 +87,13 @@ class GameInlineAdditionSubtraction extends (Game) {
 
         if (type < 50) {
             this.operations = ["-", "="]
-            op1 = draw_between(25, 100)
-            op2 = draw_between(11, op1 - 11)
+            op1 = draw_between(2 * this.min + 1, this.max)
+            op2 = draw_between(this.min, op1 - this.min)
             this.result = (op1 - op2).toString()
         } else {
             this.operations = ["+", "="]
-            var res = draw_between(25, 100)
-            op1 = draw_between(11, res - 11)
+            var res = draw_between(2 * this.min + 1, this.max)
+            op1 = draw_between(this.min, res - this.min)
             op2 = res - op1
             this.result = res.toString()
         }
@@ -147,13 +150,13 @@ class GameStackedAdditionSubtraction extends (Game) {
 
         if (type < 50) {
             this.operations = ["-", "="]
-            op1 = draw_between(25, 1000)
-            op2 = draw_between(11, op1 - 11)
+            op1 = draw_between(2 * this.min + 1, this.max)
+            op2 = draw_between(this.min, op1 - this.min)
             this.result = (op1 - op2).toString()
         } else {
             this.operations = ["+", "="]
-            var res = draw_between(25, 1000)
-            op1 = draw_between(11, res - 11)
+            var res = draw_between(2 * this.min + 1, this.max)
+            op1 = draw_between(this.min, res - this.min)
             op2 = res - op1
             this.result = res.toString()
         }
@@ -194,13 +197,13 @@ class GameQuizAdditionSubtraction extends (Game) {
 
         if (type < 50) {
             this.operations = ["-", "="]
-            op1 = draw_between(25, 100)
-            op2 = draw_between(11, op1 - 11)
+            op1 = draw_between(2 * this.min + 1, this.max)
+            op2 = draw_between(this.min, op1 - this.min)
             this.result = (op1 - op2).toString()
         } else {
             this.operations = ["+", "="]
-            var res = draw_between(25, 100)
-            op1 = draw_between(11, res - 11)
+            var res = draw_between(2 * this.min + 1, this.max)
+            op1 = draw_between(this.min, res - this.min)
             op2 = res - op1
             this.result = res.toString()
         }
